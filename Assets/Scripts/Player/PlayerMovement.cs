@@ -9,9 +9,11 @@ namespace Player {
 
         [Header("Input")]
         [SerializeField]
-        private InputActionReference moveAction = null;
+        private InputActionReference moveAction;
         [SerializeField]
-        private InputActionReference interactAction = null;
+        private InputActionReference interactAction;
+        [SerializeField]
+        private InputActionReference attackAction;
 
         [Header("Movement")]
         [SerializeField]
@@ -28,7 +30,7 @@ namespace Player {
                 return;
             }
 
-            if(!moveAction || !interactAction) {
+            if(!moveAction || !interactAction || !attackAction) {
                 Debug.LogError("Input actions not set");
                 return;
             }
@@ -37,6 +39,7 @@ namespace Player {
             moveAction.action.canceled += OnMove;
 
             interactAction.action.performed += OnInteract;
+            attackAction.action.performed += OnAttack;
         }
 
         private void OnMove(InputAction.CallbackContext context) {
@@ -51,6 +54,14 @@ namespace Player {
                 interactable.OnInteract();
             }
         }
+        private void OnAttack(InputAction.CallbackContext context) {
+            Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, interactionRange);
+            IDamageable damageable = hit.collider?.gameObject.GetComponent<IDamageable>();
+            if(damageable != null) {
+                damageable.OnAttack();
+            }
+            
+        }
 
         private void Update() {
             transform.position += (new Vector3(movementInput.x, 0f, movementInput.y)) * (movementSpeed * Time.deltaTime);
@@ -60,6 +71,7 @@ namespace Player {
         private void OnEnable() {
             moveAction.action.Enable();
             interactAction.action.Enable();
+            attackAction.action.Enable();
         }
 
         private void OnDisable() {
@@ -67,9 +79,12 @@ namespace Player {
             moveAction.action.canceled -= OnMove;
 
             interactAction.action.performed -= OnInteract;
+            attackAction.action.performed -= OnAttack;
 
             moveAction.action.Disable();
             interactAction.action.Disable();
+            attackAction.action.Disable();
+
         }
     }
 }

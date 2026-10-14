@@ -1,13 +1,34 @@
 ﻿using Environment.Tasks;
+using System;
+using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
+using Utils;
 
 namespace Environment {
-    public class Computer : MonoBehaviour, IInteractable {
-        [SerializeField]
-        private Task testTask = null; // Put your stack/queue here :)
+    class Computer : MonoBehaviour, IInteractable, IDamageable {
+        public List<GenericTaskQueue<Task>> combinedLists = new List<GenericTaskQueue<Task>>();
+
+        [SerializeReference]
+        public GenericTaskQueue<Task> tasks = new GenericTaskQueue<Task>();
+        [SerializeReference]
+        public GenericTaskQueue<Task> secondaryTasks = new GenericTaskQueue<Task>();
+
+
+        private void Awake() {
+            combinedLists.Add(tasks);
+            combinedLists.Add(secondaryTasks);
+        }
 
         public void OnInteract() {
-            testTask.Execute();
+            foreach (GenericTaskQueue<Task> taskList in combinedLists) {
+                taskList.Peek().Execute();
+                taskList.Dequeue();
+            }
+        }
+
+        public void OnAttack() {
+            Debug.Log("You destroyed the computer!");
         }
     }
 }
