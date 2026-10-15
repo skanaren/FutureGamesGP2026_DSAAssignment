@@ -1,7 +1,5 @@
-namespace Environment
-{
-    public interface IDamageable
-    {
+namespace Environment {
+    public interface IDamageable {
         abstract void OnAttack();
     }
 }

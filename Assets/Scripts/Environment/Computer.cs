@@ -6,22 +6,43 @@ using UnityEngine;
 using Utils;
 
 namespace Environment {
+    [Serializable]
     class Computer : MonoBehaviour, IInteractable, IDamageable {
-        public List<GenericTaskQueue<Task>> combinedLists = new List<GenericTaskQueue<Task>>();
 
-        [SerializeReference]
-        public GenericTaskQueue<Task> tasks = new GenericTaskQueue<Task>();
-        [SerializeReference]
-        public GenericTaskQueue<Task> secondaryTasks = new GenericTaskQueue<Task>();
+        /* VARIABLES */
+        [SerializeField] bool isActive;
+
+        /* OBJECTS */
+        [SerializeField] LightSwitch lights;
+
+        /* LISTCEPTION */
+        public List<GenericTaskQueue<Task>> combinedLists = new List<GenericTaskQueue<Task>>();
+        [SerializeReference] public GenericTaskQueue<Task> tasks = new GenericTaskQueue<Task>();
+        [SerializeReference] public GenericTaskQueue<Task> lightTasks = new GenericTaskQueue<Task>();
 
 
         private void Awake() {
+            isActive = false;
             combinedLists.Add(tasks);
-            combinedLists.Add(secondaryTasks);
+            combinedLists.Add(lightTasks);
         }
 
         public void OnInteract() {
-            foreach (GenericTaskQueue<Task> taskList in combinedLists) {
+
+            if(lightTasks.queueOfTasks.Count == 0 && !isActive) {
+                lightTasks.Enqueue(lights);
+                isActive = true;
+            }
+            else if(tasks.queueOfTasks.Count == 2 && isActive) {
+                lightTasks.Enqueue(lights);
+                lightTasks.Dequeue();
+                isActive = false;
+            }
+
+            foreach(GenericTaskQueue<Task> taskList in combinedLists) {
+              
+                if(taskList.Count() == 0) continue;
+
                 taskList.Peek().Execute();
                 taskList.Dequeue();
             }

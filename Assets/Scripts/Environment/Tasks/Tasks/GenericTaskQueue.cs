@@ -1,5 +1,7 @@
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Utils {
     public class GenericTaskQueue<T> {
@@ -25,6 +27,10 @@ namespace Utils {
             T currentTask = queueOfTasks[0];
             queueOfTasks.RemoveAt(0);
             return currentTask;
+        }
+
+        public int Count() {
+            return queueOfTasks.Count;
         }
 
         public void Clear() {
