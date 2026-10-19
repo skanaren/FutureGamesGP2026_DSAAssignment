@@ -14,26 +14,27 @@ namespace Environment {
 
         /* OBJECTS */
         [SerializeField] LightSwitch lights;
+        [SerializeField] TextAsset jsonFile;
 
         /* LISTCEPTION */
         public List<GenericTaskQueue<Task>> combinedLists = new List<GenericTaskQueue<Task>>();
-        [SerializeReference] public GenericTaskQueue<Task> tasks = new GenericTaskQueue<Task>();
+        [SerializeReference] public GenericTaskQueue<Task> normalTasks = new GenericTaskQueue<Task>();
         [SerializeReference] public GenericTaskQueue<Task> lightTasks = new GenericTaskQueue<Task>();
 
 
         private void Awake() {
             isActive = false;
-            combinedLists.Add(tasks);
+            combinedLists.Add(normalTasks);
             combinedLists.Add(lightTasks);
         }
 
         public void OnInteract() {
 
-            if(lightTasks.queueOfTasks.Count == 0 && !isActive) {
+            if(lightTasks.Count() == 0 && !isActive) {
                 lightTasks.Enqueue(lights);
                 isActive = true;
             }
-            else if(tasks.queueOfTasks.Count == 2 && isActive) {
+            else if(normalTasks.Count() == 2 && isActive) {
                 lightTasks.Enqueue(lights);
                 lightTasks.Dequeue();
                 isActive = false;
@@ -45,6 +46,17 @@ namespace Environment {
 
                 taskList.Peek().Execute();
                 taskList.Dequeue();
+            }
+
+            if(jsonFile == null) return;
+
+            Employees[] employees = JsonUtility.FromJson<EmployeeArray>(jsonFile.text)?.employees;
+
+            if(employees != null && employees.Length > 0) return;
+
+            foreach(Employees employee in employees) {
+                Debug.Log("Name: " + employee.name);
+                Debug.Log("ID: " + employee.employeeId);
             }
         }
 
