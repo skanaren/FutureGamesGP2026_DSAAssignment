@@ -15,6 +15,8 @@ namespace Player {
         private InputActionReference interactAction;
         [SerializeField]
         private InputActionReference attackAction;
+        [SerializeField]
+        private InputActionReference jumpAction;
 
         [Header("Movement")]
         [SerializeField]
@@ -46,6 +48,10 @@ namespace Player {
         private void OnMove(InputAction.CallbackContext context) {
             movementInput = context.ReadValue<Vector2>();
             animator.SetBool("bIsMoving", movementInput != Vector2.zero);
+        }
+
+        private void OnJump(InputAction.CallbackContext context) {
+            //Physics.RayCast(transform.position, transform.)
         }
 
         private void OnInteract(InputAction.CallbackContext context) {

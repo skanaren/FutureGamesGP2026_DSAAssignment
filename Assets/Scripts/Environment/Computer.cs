@@ -14,7 +14,6 @@ namespace Environment {
 
         /* OBJECTS */
         [SerializeField] LightSwitch lights;
-        [SerializeField] TextAsset jsonFile;
 
         /* LISTCEPTION */
         public List<GenericTaskQueue<Task>> combinedLists = new List<GenericTaskQueue<Task>>();
@@ -28,6 +27,7 @@ namespace Environment {
             combinedLists.Add(lightTasks);
         }
 
+        // This works because the Omnissiah willed it so
         public void OnInteract() {
 
             if(lightTasks.Count() == 0 && !isActive) {
@@ -41,22 +41,10 @@ namespace Environment {
             }
 
             foreach(GenericTaskQueue<Task> taskList in combinedLists) {
-              
+
                 if(taskList.Count() == 0) continue;
 
-                taskList.Peek().Execute();
-                taskList.Dequeue();
-            }
-
-            if(jsonFile == null) return;
-
-            Employees[] employees = JsonUtility.FromJson<EmployeeArray>(jsonFile.text)?.employees;
-
-            if(employees != null && employees.Length > 0) return;
-
-            foreach(Employees employee in employees) {
-                Debug.Log("Name: " + employee.name);
-                Debug.Log("ID: " + employee.employeeId);
+                taskList.Dequeue().Execute();
             }
         }
 
