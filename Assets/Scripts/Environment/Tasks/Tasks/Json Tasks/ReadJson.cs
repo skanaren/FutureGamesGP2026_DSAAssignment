@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Environment.Tasks {
-    [CreateAssetMenu(fileName = "PrintEmployeeOne", menuName = "PrintEmployeeOne")]
+    [CreateAssetMenu(fileName = "Read Json", menuName = "Read Json")]
     public class ReadJson : Task {
         [SerializeField] TextAsset jsonFile;
         public override void Execute() {
