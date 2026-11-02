@@ -6,8 +6,16 @@ namespace Environment.Tasks {
         public override void Execute() {
             
             foreach (Employees employees in EmployeeManager.instance.allEmployees) {
-                Debug.Log("\n Name: " + " " + employees.name + " " + "ID: " + employees.employeeId + "\n"
-                  + "Cleared: " + employees.hasEngineRoomClearance + " ");
+
+                if (employees.hasEngineRoomClearance == true) {
+
+                    Debug.Log(employees.name + "\n" + employees.lastEntranceInEngineRoom);
+                }
+                else {
+
+                    // NOTHING!!
+                }
+                
             }
         }
     }

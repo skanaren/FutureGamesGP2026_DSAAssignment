@@ -1,4 +1,5 @@
 using Environment;
+using Environment.Tasks;
 using UnityEngine;
 
 public class EmployeeManager : MonoBehaviour
@@ -7,6 +8,7 @@ public class EmployeeManager : MonoBehaviour
     public Employees[] allEmployees;
 
     private void Awake() {
+
         instance = this;
     }
 }

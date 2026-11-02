@@ -3175,7 +3175,7 @@ Transform:
   m_GameObject: {fileID: 822994638}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6247499, y: 0.98, z: 5.98}
+  m_LocalPosition: {x: 0.6247499, y: 1.08, z: 5.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6708,6 +6708,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Lightcontroller
   lightSwitch: {fileID: 11400000, guid: e3f7a07e64c1f124ba2f814b5e7310cb, type: 2}
   lights: {fileID: 205012061}
+--- !u!114 &2013282416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013282412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8133921578e552045916646553083cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EmployeeManager
+  allEmployees: []
 --- !u!1001 &2017623390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6955,15 +6968,15 @@ PrefabInstance:
     - target: {fileID: 1261029998129311158, guid: 7d560e7070230eb46aeb1576bedf22f3, type: 3}
       propertyPath: 'managedReferences[1000].queueOfTasks.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: c810a476c0d95674b9a8bf80cda4f4e8, type: 2}
+      objectReference: {fileID: 11400000, guid: 34b35cc576b50b84ca185e553648a829, type: 2}
     - target: {fileID: 1261029998129311158, guid: 7d560e7070230eb46aeb1576bedf22f3, type: 3}
       propertyPath: 'managedReferences[1000].queueOfTasks.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: 4d8fe43896e89ff46a94bc573ef717a4, type: 2}
+      objectReference: {fileID: 11400000, guid: 34b35cc576b50b84ca185e553648a829, type: 2}
     - target: {fileID: 1261029998129311158, guid: 7d560e7070230eb46aeb1576bedf22f3, type: 3}
       propertyPath: 'managedReferences[1000].queueOfTasks.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: 4d8fe43896e89ff46a94bc573ef717a4, type: 2}
+      objectReference: {fileID: 11400000, guid: 34b35cc576b50b84ca185e553648a829, type: 2}
     - target: {fileID: 1261029998129311158, guid: 7d560e7070230eb46aeb1576bedf22f3, type: 3}
       propertyPath: 'managedReferences[1000].queueOfTasks.Array.data[4]'
       value: 
@@ -7035,6 +7048,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1057683460427819544, guid: 7d560e7070230eb46aeb1576bedf22f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2013282414}
+    - targetCorrespondingSourceObject: {fileID: 1057683460427819544, guid: 7d560e7070230eb46aeb1576bedf22f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2013282416}
   m_SourcePrefab: {fileID: 100100000, guid: 7d560e7070230eb46aeb1576bedf22f3, type: 3}
 --- !u!1001 &8404672306686481740
 PrefabInstance:
