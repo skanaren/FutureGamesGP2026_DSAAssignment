@@ -27,7 +27,7 @@ namespace Environment {
             combinedLists.Add(lightTasks);
         }
 
-        // This works because the Omnissiah willed it so
+        // This works only because the Omnissiah willed it so
         public void OnInteract() {
 
             if(lightTasks.Count() == 0 && !isActive) {

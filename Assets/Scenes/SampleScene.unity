@@ -6955,7 +6955,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: ff03f0eefaebe9e40aa1e0d120fb14ac, type: 2}
     - target: {fileID: 1261029998129311158, guid: 7d560e7070230eb46aeb1576bedf22f3, type: 3}
       propertyPath: managedReferences[1000].queueOfTasks.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1261029998129311158, guid: 7d560e7070230eb46aeb1576bedf22f3, type: 3}
       propertyPath: managedReferences[1001].queueOfTasks.Array.size
@@ -6968,11 +6968,11 @@ PrefabInstance:
     - target: {fileID: 1261029998129311158, guid: 7d560e7070230eb46aeb1576bedf22f3, type: 3}
       propertyPath: 'managedReferences[1000].queueOfTasks.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 34b35cc576b50b84ca185e553648a829, type: 2}
+      objectReference: {fileID: 11400000, guid: 052ecbcc86789d84c99e5db7b4861b07, type: 2}
     - target: {fileID: 1261029998129311158, guid: 7d560e7070230eb46aeb1576bedf22f3, type: 3}
       propertyPath: 'managedReferences[1000].queueOfTasks.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: 34b35cc576b50b84ca185e553648a829, type: 2}
+      objectReference: {fileID: 11400000, guid: 433f9e5b3a24548468c76b1a5b4832c0, type: 2}
     - target: {fileID: 1261029998129311158, guid: 7d560e7070230eb46aeb1576bedf22f3, type: 3}
       propertyPath: 'managedReferences[1000].queueOfTasks.Array.data[3]'
       value: 
