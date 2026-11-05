@@ -9,15 +9,18 @@ namespace Enviornment.Tasks {
     [CreateAssetMenu(fileName = "BinarySearch", menuName = "Scriptable Objects/BinarySearch")]
     public class BinarySearch : Task {
 
+
+
         public override void Execute() {
 
             int low = Search(EmployeeManager.instance.allEmployees, new DateTime(1970, 01, 01));
             int high = Search(EmployeeManager.instance.allEmployees, new DateTime(2234, 08, 07, 20, 44, 44));
-            int i = low;
-            for (int j = 0; i <= high; i++) {
+
+            for (int i = low; i <= high; i++) {
 
                 Debug.Log("You searched for: " + EmployeeManager.instance.allEmployees[i].name + "\n" + EmployeeManager.instance.allEmployees[i].lastEntranceInEngineRoom);
             }
+            Debug.Log(low + " " + high);
         }
 
         public static int Search(Employees[] inArray, DateTime elementToSearch) {

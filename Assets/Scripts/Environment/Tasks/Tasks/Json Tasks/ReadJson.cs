@@ -14,6 +14,8 @@ namespace Environment.Tasks {
             EmployeeManager.instance.allEmployees = employees;
 
             if(employees == null || employees.Length <= 0) return;
+
+            Debug.Log("Read");
         }
     }
 }

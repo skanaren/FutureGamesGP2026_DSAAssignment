@@ -11,6 +11,7 @@ namespace Environment.Tasks {
         public override void Execute() {
 
             QuickSort(EmployeeManager.instance.allEmployees, 0, EmployeeManager.instance.allEmployees.Length - 1);
+            Debug.Log("Sorted");
         }
 
        public static void QuickSort(Employees[] inArray, int first, int last) {
