@@ -27,7 +27,7 @@ namespace Environment.Tasks {
         public static int Partition(Employees[] inArray, int first, int last) {
 
             int ranIndex = UnityEngine.Random.Range(first, last);
-            DateTime pivot = DateTime.Parse(inArray[ranIndex].lastEntranceInEngineRoom);
+            DateTime pivot = DateTime.ParseExact(inArray[ranIndex].lastEntranceInEngineRoom, "yyyy-MM-ddTHH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
 
             Employees randomArray = inArray[ranIndex];
             inArray[ranIndex] = inArray[last];
@@ -41,17 +41,16 @@ namespace Environment.Tasks {
 
                     i = i + 1;
 
-                    Employees tempArray = inArray[j];
+                    Employees temp2Array = inArray[j];
                     inArray[j] = inArray[i];
-                    inArray[i] = tempArray;
-                }
-                else {
-
-                    Employees tempArray = inArray[last];
-                    inArray[last] = inArray[i + 1];
-                    inArray[i + 1] = tempArray;
+                    inArray[i] = temp2Array;
                 }
             }
+
+            Employees tempArray = inArray[last];
+            inArray[last] = inArray[i + 1];
+            inArray[i + 1] = tempArray;
+
             return i + 1;
         }
     }
