@@ -26,7 +26,7 @@ namespace Environment.Tasks {
 
         public static int Partition(Employees[] inArray, int first, int last) {
 
-            int ranIndex = UnityEngine.Random.Range(first, last);
+            int ranIndex = UnityEngine.Random.Range(first, last + 1);
             DateTime pivot = DateTime.ParseExact(inArray[ranIndex].lastEntranceInEngineRoom, "yyyy-MM-ddTHH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
 
             Employees randomArray = inArray[ranIndex];
@@ -35,7 +35,7 @@ namespace Environment.Tasks {
 
             int i = first - 1;
 
-            for(int j = first; j < last - 1; j++) {
+            for(int j = first; j < last; j++) {
 
                 if(DateTime.ParseExact(inArray[j].lastEntranceInEngineRoom, "yyyy-MM-ddTHH:mm:ss", System.Globalization.CultureInfo.InvariantCulture) < pivot) {
 
